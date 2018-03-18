@@ -1,5 +1,8 @@
+4th Law Template for AirBox Home
 https://github.com/4th-law/profile_sensor_template
 
-https://resin.io/features/
 
+Resin OS links:
+https://resin.io/features/
 https://dashboard.resin.io/apps/1005669/devices
+https://files.slack.com/files-pri/T9KJ6Q9EW-F9SKESWQ6/download/resin-airboxhomev1-2.12.3_rev1-dev-v7.1.14.img.zip
