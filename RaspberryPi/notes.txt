@@ -1,0 +1,5 @@
+https://github.com/4th-law/profile_sensor_template
+
+https://resin.io/features/
+
+https://dashboard.resin.io/apps/1005669/devices
