@@ -5,4 +5,5 @@ https://github.com/4th-law/profile_sensor_template
 Resin OS links:
 https://resin.io/features/
 https://dashboard.resin.io/apps/1005669/devices
-https://files.slack.com/files-pri/T9KJ6Q9EW-F9SKESWQ6/download/resin-airboxhomev1-2.12.3_rev1-dev-v7.1.14.img.zip
+For AirBox Wifi: https://files.slack.com/files-pri/T9KJ6Q9EW-F9SGFS3FE/download/resin-ssid_airbox-pas_boxboxboxbox-airboxhomev1-2.12.3_rev1-dev-v7.1.14.img.zip
+For CircuitLaunch Wifi: https://files.slack.com/files-pri/T9KJ6Q9EW-F9SKESWQ6/download/resin-airboxhomev1-2.12.3_rev1-dev-v7.1.14.img.zip
