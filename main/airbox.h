@@ -144,8 +144,53 @@
 #define GAUGE_SUB_STORE_REMCAP_A        0x22c1
 #define GAUGE_SUB_STORE_REMCAP_B        0x28a0
 
+
+/** Copy of rc.local.sh file at filepath /etc/rc.local
+  #disable pause frame support
+  ethtool -A eth0 autoneg off rx off tx off
+  #reset link to promote auto negotiation.
+  ethtool -r eth0
+  echo "ESP32 - rc.local: Disabled pause frame support and reset eth0" > /dev/kmsg
+  echo 160 > /sys/class/gpio/export
+  echo 161 > /sys/class/gpio/export
+  echo 162 > /sys/class/gpio/export
+  echo 163 > /sys/class/gpio/export
+  echo 164 > /sys/class/gpio/export
+  echo 165 > /sys/class/gpio/export
+  echo 166 > /sys/class/gpio/export
+  echo 83 > /sys/class/gpio/export
+  echo out > /sys/class/gpio/gpio164/direction
+  echo out > /sys/class/gpio/gpio165/direction
+  echo out > /sys/class/gpio/gpio166/direction
+  echo out > /sys/class/gpio/gpio83/direction
+  chmod a+rw /sys/class/gpio/gpio160/value
+  chmod a+rw /sys/class/gpio/gpio161/value
+  chmod a+rw /sys/class/gpio/gpio162/value
+  chmod a+rw /sys/class/gpio/gpio163/value
+  chmod a+rw /sys/class/gpio/gpio164/value
+  chmod a+rw /sys/class/gpio/gpio165/value
+  chmod a+rw /sys/class/gpio/gpio166/value
+  chmod a+rw /sys/class/gpio/gpio83/value
+  chmod a+rw /sys/class/gpio/gpio160/edge
+  chmod a+rw /sys/class/gpio/gpio161/edge
+  chmod a+rw /sys/class/gpio/gpio162/edge
+  chmod a+rw /sys/class/gpio/gpio163/edge
+*/
+
+//Pin value constants
+#define LOW   0
+#define HIGH  1
+#define UNDEFINED -1
+//TO-DO: #define PWM_TWO_PERCENT to PWM_HUNDRED_PERCENT in two percent steps
+
+//Pin direction constants
+#define INPUT_PIN 0
+#define OUTPUT_PIN 1
+
 #define CONNECTED_BIT        BIT0
 #define DISCONNECTED_BIT     BIT1
+
+extern bool DEBUG_STATEMENTS_ON;  //Toggle error messages on and off
 
 // battery fuel gauge functions in battery.c
 esp_err_t gauge_write(i2c_port_t port, uint8_t reg, uint8_t *data, uint8_t len);
@@ -158,3 +203,4 @@ bool gauge_voltage(i2c_port_t port, double *voltage);
 bool gauge_rsoc(i2c_port_t port, double *rsoc);
 
 // vim: autoindent tabstop=4 shiftwidth=4 expandtab softtabstop=4
+

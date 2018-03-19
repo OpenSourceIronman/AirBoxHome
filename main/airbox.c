@@ -10,6 +10,7 @@
 */
 
 #include "airbox.h"
+#include "userLogin.h"
 
 // data from fuel gauge
 static uint32_t version = 0;
