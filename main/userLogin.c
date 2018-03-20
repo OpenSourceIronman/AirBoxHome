@@ -16,7 +16,8 @@
  */
 
 
-#include <"userLogin.h"> 
+#include "userLogin.h"
+#include <string>
 
 //See userLogin.h for futher documentation on the following PUBLIC functions:
 
