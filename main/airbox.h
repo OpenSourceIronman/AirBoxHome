@@ -32,8 +32,8 @@
 #include "soc/mcpwm_reg.h"
 #include "soc/mcpwm_struct.h"
 
-#define WIFI_SSID       "AirBox"
-#define WIFI_PASSPHRASE "BoxBoxBoxBox"
+#define WIFI_SSID       "AirBoxNetwork"
+#define WIFI_PASSPHRASE "AirBoxHome"
 
 #define HTTP_PORT            5000
 
