@@ -34,7 +34,7 @@
 
 #define WIFI_SSID       "AirBoxNetwork"
 #define WIFI_PASSPHRASE "AirBoxHome"
-
+#define IP_ADDRESS      "192.168.8.1:5000"
 #define HTTP_PORT            5000
 
 #define MAX_URI_LEN            16
