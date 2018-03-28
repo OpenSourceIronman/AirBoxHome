@@ -51,9 +51,9 @@ void InitializeDatabase(??? *db);
   *
   * @see ????
   *
-  * @return  TRUE = 1 if username exists, and  FALSE = 0 otherwise
+  * @return TRUE if username exists, and FALSE otherwise
   */
-unsigned int CheckUsername(string userName);
+bool CheckUsername(string userName);
 
 
 /**
@@ -69,7 +69,7 @@ unsigned int CheckUsername(string userName);
   *
   * @return  TRUE = 1 if username exists, and  FALSE = 0 otherwise
   */
-unsigned int CheckPassword(string password);
+bool CheckPassword(string password);
 
 
 /**
@@ -90,10 +90,9 @@ void UnitTest();
  *
  * @section DESCRIPTION
  *
- *
- * @return  TRUE = 1 password was sucessfully encrypted, and  FALSE = 0 otherwise
+ * @return  TRUE if password was sucessfully encrypted, and  FALSE otherwise
  */
-unsigned int EncryptPassword();
+bool EncryptPassword();
 
 /**
  * @brief Compare encrypted password to password store in user database
@@ -101,8 +100,8 @@ unsigned int EncryptPassword();
  * @section DESCRIPTION
  *
  *
- * @return  TRUE = 1 password was sucessfully encrypted, and  FALSE = 0 otherwise
+ * @return  TRUE if password was sucessfully encrypted, and  FALSE otherwise
  */
-unsigned int VerfifyPassword();
+bool VerfifyPassword();
 
 #endif //USER_LOGIN_H
