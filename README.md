@@ -3,6 +3,7 @@ ESP32 and Raspberry Pi code to enable human and drone login and control of an Ai
 https://airboxtechnologies.com
 
 Author #1: Christopher Hewitt Email: hewittc@avcomofva.com Org: AVCOM of Virginia
+
 Author #2: Blaze Sanders Email: blaze@robobev.com Skype: blaze.sanders Twitter: @BlazeDSanders
 
 Drone Delivery Systems AirBox control software
