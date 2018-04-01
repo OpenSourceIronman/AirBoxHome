@@ -31,13 +31,13 @@
   *
   * Outputs pins default to LOW and input default to an UNDEFINED state.
   *
-  * @param db Pointer to struct holding user login database (db)
+  * @param NONE TODO db Pointer to struct holding user login database
   *
   * @see ???
   *
   * @return NOTHING
   */
-void InitializeDatabase(??? *db);
+void InitializeLocalDatabase();
 
 /**
   * @brief Verify that username even exists in the database
