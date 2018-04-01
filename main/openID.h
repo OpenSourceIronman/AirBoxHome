@@ -3,6 +3,7 @@
  * @author Blaze Sanders ROBO BEV(TM)
  * @date 03/27/2016
  * @link https://www.janrain.com/openid-enabled
+ * @link https://github.com/airboxtechnology/python-openid
  * @version 1.0
  *
  * @brief Securely transmit usernames and passwords for login system
@@ -21,6 +22,9 @@
 #define PUBLIC_KEY 1234567890
 
 //Public function prototypes with system calls to check, get and set functions
+
+
+//Private function prototypes with ???
 
 
 

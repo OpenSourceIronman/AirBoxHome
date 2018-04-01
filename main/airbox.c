@@ -184,6 +184,22 @@ void airbox_init_gpio() {
 
     // disable 6 volt regulator
     gpio_set_level(POWER_6V_EN_PIN, 0);
+
+
+    //Configure unlock pins for mini push-pull solenoids
+    config.intr_type = GPIO_PIN_INTR_DISABLE;
+    config.mode = GPIO_MODE_OUTPUT;
+    config.pin_bit_mask = ((1 << UNLOCK_DOOR_1_PIN));
+    config.pin_bit_mask = ((1 << UNLOCK_DOOR_2_PIN));
+    config.pull_down_en = 1;
+    config.pull_up_en = 0;
+
+    gpio_config(&config);
+
+    //Lock both doors
+    gpio_set_level(UNLOCK_DOOR_1_PIN, 0);
+    gpio_set_level(UNLOCK_DOOR_2_PIN, 0);
+
 }
 
 /**

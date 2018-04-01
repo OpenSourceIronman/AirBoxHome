@@ -5,7 +5,7 @@
  * @link https://www.espressif.com/en/products/hardware/esp32/overview
  * @version 1.0
  *
- * @brief C to HTML interface connect user login page to mySQL database
+ * @brief C to HTML interface to implement user login page via openID 
  *
  * @section DESCRIPTION
  *

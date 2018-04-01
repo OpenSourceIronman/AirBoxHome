@@ -43,6 +43,7 @@
 #define RSOC_THRESHOLD_WAKE  30.0 // relative state of charge to wake
 
 #define POWER_6V_EN_PIN        25
+#define UNLOCK_DOOR_1_PIN      26 //TO-DO: DETERMINE WHICH PIN TO CONNECT TO
 
 #define SERVO_ONE_PIN          32
 #define SERVO_TWO_PIN          33
