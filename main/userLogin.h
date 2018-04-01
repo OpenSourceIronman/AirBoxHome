@@ -18,7 +18,7 @@
 #define USER_LOGIN_H
 
 #include <iostream>      //Standard input/output stream objects, needed to use cout()
-#include <string.h>      //Used for strlen() function
+#include <string>        //Used for strlen() function
 #include <cassert>       //Used in UnitTest for functional testing
 
 //Public function prototypes with system calls to check, get and set functions

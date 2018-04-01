@@ -1,5 +1,5 @@
 /**
- * @file userLogin.c
+ * @file userLogin.cpp
  * @author Blaze Sanders ROBO BEV(TM)
  * @date 03/19/2016
  * @link https://www.espressif.com/en/products/hardware/esp32/overview
@@ -82,13 +82,13 @@ void InitializeLocalDatabase(){
   mysql_close(con);
 }
 
-unsigned int CheckUsername(String userName){
+unsigned int CheckUsername(string userName){
 
   return TRUE;
 }
 
 
-unsigned int CheckPassword(String password){
+unsigned int CheckPassword(string password){
 
   return TRUE;
 }
