@@ -1,0 +1,4 @@
+With some Linux distributions you may get the Failed to open port /dev/ttyUSB0 error message when flashing the ESP32.
+https://esp-idf.readthedocs.io/en/latest/get-started/establish-serial-connection.html#linux-dialout-group
+
+https://esp-idf.readthedocs.io/en/latest/get-started/linux-setup.html
