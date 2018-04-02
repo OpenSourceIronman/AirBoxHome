@@ -9,15 +9,20 @@
  *
  * @section DESCRIPTION
  *
- * Program to configure and control the General Purpose Input / Output
- * (GPIO) pins of the ESP32  IoT device, and enable user to login into
- * an AirBox Home V1.
+ * Program to enable user or drone to login into an AirBox Home V1.
  *
  */
 
-
 #include "userLogin.h"
+
+//Enable program to get user input
 #include <string>
+#include <iostream>
+#include <sstream>
+
+//Enable use of random number generator 
+#include <cstdlib>
+#include <ctime>
 
 //Enable use of mySQL
 #include <my_global.h>
@@ -42,7 +47,6 @@ static const char http_index[] =
     "<img src=\"http:\/\/customadesign.info/airboxtechnologies-new/wp-content/uploads/2018/03/logo.png\"  alt="">\r\n"
     "<h1 style=\"color: #000000;\"> User Sign In </h1>\r\n"
     "<br>\r\n"
-    //No special characters allowed in usernames
     "<label for=\"name\">Username</label><br> <input style="" name=\"name\" type=\"text\" value=\"FirstLast\" /> <br>\r\n"
     "<br>\r\n"
     "<label for=\"name\">Password</label><br> <input name=\"name\" type=\"text\" value=\"********\" /> </form>\r\n"
@@ -55,13 +59,14 @@ static const char http_index[] =
 
 //See userLogin.h for futher documentation on the following PUBLIC functions:
 
-UserLogin::UserLogin(){
+UserLogin::UserLogin() : {
+  databaseID = srand(time(NULL));  //Give database a random ID
   InitializeLocalDatabase();
+  //TODO InitializeOpenIDDatabase();
 }
 
 void UserLogin::InitializeLocalDatabase(){
-  //TODO They don't want a server base login. Just local login...
-  //http://zetcode.com/db/mysqlc/
+  //TODO http://zetcode.com/db/mysqlc/
   MYSQL *con = mysql_init(NULL);
   if(DEBUG_STATMENTS_ON) printf("MySQL client version: %s\n", mysql_get_client_info());
 
@@ -88,13 +93,13 @@ void UserLogin::InitializeLocalDatabase(){
   mysql_close(con);
 }
 
-unsigned int UserLogin::CheckUsername(string userName){
+bool UserLogin::GetUsername(){
 
   return TRUE;
 }
 
 
-unsigned int UserLogin::CheckPassword(string password){
+bool UserLogin::CheckPassword(){
 
   return TRUE;
 }
@@ -119,12 +124,12 @@ void UserLogin::UnitTest(){
 
 //See userLogin.h for futher documentation on the following PRIVATE functions:
 
-unsigned int UserLogin::EncryptPassword(){
+bool UserLogin::EncryptPassword(){
 
   return TRUE;
 }
 
-unsigned int UserLogin::VerfifyPassword(){
+bool UserLogin::VerfifyPassword(){
 
   return TRUE;
 }

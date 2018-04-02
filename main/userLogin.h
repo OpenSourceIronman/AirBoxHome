@@ -25,89 +25,96 @@ using namespace std;
 
 class UserLogin
 {
-private:
 
-public:
-
-/**
-  * @brief Create and configure mySQL database to store encryted user login data
-  *
-  * @section DESCRIPTION
-  *
-  * Outputs pins default to LOW and input default to an UNDEFINED state.
-  *
-  * @param NONE TODO db Pointer to struct holding user login database
-  *
-  * @see ???
-  *
-  * @return NOTHING
-  */
-void InitializeLocalDatabase();
-
-/**
-  * @brief Verify that username even exists in the database
-  *
-  * @section DESCRIPTION
-  *
-  * No special characters such as "@ _ - , . " are allowed in usernames.
-  * If username doesn't exist user is promted to create a username
-  *
-  * @param  userName Username to check database for
-  *
-  * @see ????
-  *
-  * @return TRUE if username exists, and FALSE otherwise
-  */
-bool CheckUsername(string userName);
+  //Private function prototypes not need by developers or customers
+  private:
+    int databaseID;
 
 
-/**
-  * @brief Parse and encrypt user password and then compare to database
-  *
-  * @section DESCRIPTION
-  *
-  * No special characters such as "@ _ - , . " are allowed in passwords.
-  *
-  * @param  password Password compare against username in database
-  *
-  * @see ????
-  *
-  * @return  TRUE = 1 if username exists, and  FALSE = 0 otherwise
-  */
-bool CheckPassword(string password);
+    /**
+     * @brief Encrypt password for transimission over the internet
+     *
+     * @section DESCRIPTION
+     *
+     * TODO
+     *
+     * @return  TRUE if password was sucessfully encrypted, and  FALSE otherwise
+     */
+     bool EncryptPassword();
+
+    /**
+     * @brief Compare encrypted password to password store in user database
+     *
+     * @section DESCRIPTION
+     *
+     * TODO
+     *
+     * @return  TRUE if password was sucessfully encrypted, and  FALSE otherwise
+     */
+    bool VerfifyPassword();
 
 
-/**
- * @brief Test userLogin.c pin using assertions, one hardware configurations, and user input.
- *
- * @param NONE
- *
- * @return NOTHING
- */
-void UnitTest();
+  //Public function prototypes to get and set class variables
+  public:
+    UserLogin();
 
 
+    /**
+     * @brief Create and configure mySQL database to store encryted user login data
+     *
+     * @section DESCRIPTION
+     *
+     * Outputs pins default to LOW and input default to an UNDEFINED state.
+     *
+     * @param NONE TODO db Pointer to struct holding user login database
+     *
+     * @see ???
+     *
+     * @return NOTHING
+     */
+    void InitializeLocalDatabase();
 
-//Private function prototypes not need by developers or customers
+    /**
+     * @brief Verify that username even exists in the database
+     *
+     * @section DESCRIPTION
+     *
+     * No special characters such as "@ _ - , . " are allowed in usernames.
+     * If username doesn't exist user is promted to create a username
+     *
+     * @param  userName Username to check database for
+     *
+     * @see ????
+     *
+     * @return TRUE if username exists, and FALSE otherwise
+     */
+    bool GetUsername();
 
-/**
- * @brief Encrypt password for transimission over the internet
- *
- * @section DESCRIPTION
- *
- * @return  TRUE if password was sucessfully encrypted, and  FALSE otherwise
- */
-bool EncryptPassword();
 
-/**
- * @brief Compare encrypted password to password store in user database
- *
- * @section DESCRIPTION
- *
- *
- * @return  TRUE if password was sucessfully encrypted, and  FALSE otherwise
- */
-bool VerfifyPassword();
+    /**
+     * @brief Parse and encrypt user password and then compare to database
+     *
+     * @section DESCRIPTION
+     *
+     * No special characters such as "@ _ - , . " are allowed in passwords.
+     *
+     * @param  password Password compare against username in database
+     *
+     * @see ????
+     *
+     * @return  TRUE = 1 if username exists, and  FALSE = 0 otherwise
+     */
+    bool CheckPassword();
+
+
+    /**
+     * @brief Test userLogin.c pin using assertions, one hardware configurations, and user input.
+    *
+    * @param NONE
+    *
+    * @return NOTHING
+    */
+    void UnitTest();
 
 };  //END CLASS
 
