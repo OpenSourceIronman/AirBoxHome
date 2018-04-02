@@ -13,6 +13,9 @@
  *
  */
 
+//TODO http://www.math.uaa.alaska.edu/~afkjm/csce211/handouts/SeparateCompilation.pdf
+//TODO https://stackoverflow.com/questions/877523/error-request-for-member-in-which-is-of-non-class-type
+
 #include "userLogin.h"
 
 //Enable program to get user input
@@ -59,16 +62,22 @@ static const char http_index[] =
 
 //See userLogin.h for futher documentation on the following PUBLIC functions:
 
-UserLogin::UserLogin() : {
-  databaseID = srand(time(NULL));  //Give database a random ID
-  InitializeLocalDatabase();
-  //TODO InitializeOpenIDDatabase();
-}
+//Default constructor
+UserLogin::UserLogin() : databaseID(-1) {}
+
+//TODO void UserLgoin::InitializeOpenIDDatabase(){ ??? }
+
 
 void UserLogin::InitializeLocalDatabase(){
+
+  srand(time(NULL));    //Seed random number generator with time
+  databaseID = rand();  //Give database a random ID
+
   //TODO http://zetcode.com/db/mysqlc/
   MYSQL *con = mysql_init(NULL);
-  if(DEBUG_STATMENTS_ON) printf("MySQL client version: %s\n", mysql_get_client_info());
+  if (DEBUG_STATEMENTS_ON){
+    printf("MySQL client version: %s\n", mysql_get_client_info());
+  }
 
   if (con == NULL){
     fprintf(stderr, "%s\n", mysql_error(con));
@@ -107,17 +116,19 @@ bool UserLogin::CheckPassword(){
 
 void UserLogin::UnitTest(){
 
-  assert(CheckUsername("GoodName1"))
-  assert(CheckUsername("Bad.Name1"))
+  //assert(GetUsername("GoodName1"))
+  //assert(GetUsername("Bad.Name1"))
 
-  assert(CheckUsername("2goodName"))
-  assert(CheckUsername("BadName2@"))
+  //assert(GetUsername("2goodName"))
+  //assert(GetUsername("BadName2@"))
 
-  assert(CheckUsername("Goodname3"))
-  assert(CheckUsername("Bad_Name3"))
-  assert(CheckUsername("-BadName4"))
+  //assert(GetUsername("Goodname3"))
+  //assert(GetUsername("Bad_Name3"))
+  //assert(GetUsername("-BadName4"))
 
-  IF(DEBUG_STATEMENTS_ON) ???;
+  if (DEBUG_STATEMENTS_ON){
+    cout << "END PROGRAM" << endl;
+  }
 
 }
 

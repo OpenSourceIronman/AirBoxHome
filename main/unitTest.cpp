@@ -4,7 +4,12 @@
 #include "userLogin.h"
 
 int main(int argc, char **argv){
-  UserLogin db();
+  cout << "Create database" << endl;
+
+  UserLogin db;
+
+  bool OK;
+  OK = db.GetUsername();
 
   return 0;
 }
