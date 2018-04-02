@@ -21,9 +21,15 @@
 #include <string>        //Used for strlen() function
 #include <cassert>       //Used in UnitTest for functional testing
 
+using namespace std;
+
+
+class UserLogin
+{
+
 //Public function prototypes with system calls to check, get and set functions
 
-
+public:
 /**
   * @brief Create and configure mySQL database to store encryted user login data
   *
@@ -103,5 +109,7 @@ bool EncryptPassword();
  * @return  TRUE if password was sucessfully encrypted, and  FALSE otherwise
  */
 bool VerfifyPassword();
+
+}; //END CLASS
 
 #endif //USER_LOGIN_H

@@ -23,6 +23,10 @@
 #include <my_global.h>
 #include <mysql.h>
 
+using namespace std;
+
+
+
 //Toogle debug print statments on and off
 static const bool DEBUG_STATEMENTS_ON = true;
 
@@ -52,6 +56,9 @@ static const char http_index[] =
 
 
 //See userLogin.h for futher documentation on the following PUBLIC functions:
+
+class UserLogin
+{
 
 void InitializeLocalDatabase(){
   //TODO They don't want a server base login. Just local login...
@@ -124,3 +131,4 @@ unsigned int VerfifyPassword(){
 }
 
 
+}; //END CLASS
