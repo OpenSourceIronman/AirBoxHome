@@ -23,13 +23,12 @@
 
 using namespace std;
 
-
 class UserLogin
 {
-
-//Public function prototypes with system calls to check, get and set functions
+private:
 
 public:
+
 /**
   * @brief Create and configure mySQL database to store encryted user login data
   *
@@ -110,6 +109,6 @@ bool EncryptPassword();
  */
 bool VerfifyPassword();
 
-}; //END CLASS
+};  //END CLASS
 
 #endif //USER_LOGIN_H

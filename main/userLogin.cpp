@@ -25,8 +25,6 @@
 
 using namespace std;
 
-
-
 //Toogle debug print statments on and off
 static const bool DEBUG_STATEMENTS_ON = true;
 
@@ -57,10 +55,11 @@ static const char http_index[] =
 
 //See userLogin.h for futher documentation on the following PUBLIC functions:
 
-class UserLogin
-{
+UserLogin::UserLogin(){
+  InitializeLocalDatabase();
+}
 
-void InitializeLocalDatabase(){
+void UserLogin::InitializeLocalDatabase(){
   //TODO They don't want a server base login. Just local login...
   //http://zetcode.com/db/mysqlc/
   MYSQL *con = mysql_init(NULL);
@@ -89,19 +88,19 @@ void InitializeLocalDatabase(){
   mysql_close(con);
 }
 
-unsigned int CheckUsername(string userName){
+unsigned int UserLogin::CheckUsername(string userName){
 
   return TRUE;
 }
 
 
-unsigned int CheckPassword(string password){
+unsigned int UserLogin::CheckPassword(string password){
 
   return TRUE;
 }
 
 
-void UnitTest(){
+void UserLogin::UnitTest(){
 
   assert(CheckUsername("GoodName1"))
   assert(CheckUsername("Bad.Name1"))
@@ -120,15 +119,12 @@ void UnitTest(){
 
 //See userLogin.h for futher documentation on the following PRIVATE functions:
 
-unsigned int EncryptPassword(){
+unsigned int UserLogin::EncryptPassword(){
 
   return TRUE;
 }
 
-unsigned int VerfifyPassword(){
+unsigned int UserLogin::VerfifyPassword(){
 
   return TRUE;
 }
-
-
-}; //END CLASS
