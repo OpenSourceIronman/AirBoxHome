@@ -1,4 +1,4 @@
-/**
+)/**
  * @file userLogin.cpp
  * @author Blaze Sanders ROBO BEV(TM)
  * @date 03/19/2016
@@ -13,9 +13,6 @@
  *
  */
 
-//TODO http://www.math.uaa.alaska.edu/~afkjm/csce211/handouts/SeparateCompilation.pdf
-//TODO https://stackoverflow.com/questions/877523/error-request-for-member-in-which-is-of-non-class-type
-
 #include "userLogin.h"
 
 //Enable program to get user input
@@ -23,13 +20,16 @@
 #include <iostream>
 #include <sstream>
 
-//Enable use of random number generator 
+//Enable use of random number generator
 #include <cstdlib>
 #include <ctime>
 
 //Enable use of mySQL
-#include <my_global.h>
-#include <mysql.h>
+//TODO How do I tell compiler to look at local code at:
+// ~/GitHub/mysql/include?
+// https://github.com/twitter/mysql/tree/master/include
+//TODO#include <my_global.h>
+//TODO#include <mysql.h>
 
 using namespace std;
 
@@ -71,60 +71,44 @@ UserLogin::UserLogin() : databaseID(-1) {}
 void UserLogin::InitializeLocalDatabase(){
 
   srand(time(NULL));    //Seed random number generator with time
-  databaseID = rand();  //Give database a random ID
-
-  //TODO http://zetcode.com/db/mysqlc/
-  MYSQL *con = mysql_init(NULL);
-  if (DEBUG_STATEMENTS_ON){
-    printf("MySQL client version: %s\n", mysql_get_client_info());
-  }
-
-  if (con == NULL){
-    fprintf(stderr, "%s\n", mysql_error(con));
-    exit(1);
-  }
-
-  //We provide connection handler, host name, user name and password parameters to the function.
-  //The other four parameters are the database name, port number, unix socket and finally the client flag.
-  //We need superuser priviliges to create a new database.
-  if (mysql_real_connect(con, "localhost", "root", "root_pswd", NULL, 0, NULL, 0) == NULL){
-    fprintf(stderr, "%s\n", mysql_error(con));
-    mysql_close(con);
-    exit(1);
-  }
-
-  if (mysql_query(con, "CREATE DATABASE login_db")){
-    fprintf(stderr, "%s\n", mysql_error(con));
-    mysql_close(con);
-    exit(1);
-  }
-
-  mysql_close(con);
 }
 
-bool UserLogin::GetUsername(){
-
-  return TRUE;
+bool UserLogin::CheckPassword(string password){
+  if(this->currentPassword == password) return true; //TODO Can you do this with string variables???
+  else return false;
 }
 
-
-bool UserLogin::CheckPassword(){
-
-  return TRUE;
-}
+bool UserLogin::SetPassword(string password){
+  if(7 < password.length() && password.length() < 17){
+    //TODO Other checks if()
+    this->currentPassword = password;
+    return true;
+  }
+  else{
+    cout << "You enter a PASSWORD less then 8 or more then 16 characters!" << endl;
+    cout << "Please try again :)" << endl;
+    return false;
+  }
+}//END SetPassword()
 
 
 void UserLogin::UnitTest(){
+  UserLogin testUser;
 
-  //assert(GetUsername("GoodName1"))
-  //assert(GetUsername("Bad.Name1"))
+  // '!' is the NOT logic operator
+  assert(testUser.CheckUsername("AirBoxUser"));
+  assert(!testUser.CheckUsername("Bad.Name1"));
+  assert(testUser.CheckPassword("AirBoxHome"));
+  assert(!testUser.CheckPassword("BAD_PASSWORD"));
 
-  //assert(GetUsername("2goodName"))
-  //assert(GetUsername("BadName2@"))
+  assert(testUser.SetUsername("Blaze.Sanders"));
+  assert(testUser.CheckUsername("Blaze.Sanders"));
+  assert(!testUser.CheckUsername("Shawn.Miser"));
 
-  //assert(GetUsername("Goodname3"))
-  //assert(GetUsername("Bad_Name3"))
-  //assert(GetUsername("-BadName4"))
+  assert(testUser.SetPassword("GoodPassword"));
+  assert(!testUser.SetPassword("2Short"));
+  assert(!testUser.SetPassword("WayWayWayToLongPassword"));
+  assert(testUser.SetPassword("!@.#$%^!&*()-_OK"));
 
   if (DEBUG_STATEMENTS_ON){
     cout << "END PROGRAM" << endl;
@@ -137,10 +121,10 @@ void UserLogin::UnitTest(){
 
 bool UserLogin::EncryptPassword(){
 
-  return TRUE;
+  return true;
 }
 
 bool UserLogin::VerfifyPassword(){
 
-  return TRUE;
+  return true;
 }

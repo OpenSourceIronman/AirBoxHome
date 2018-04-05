@@ -28,8 +28,18 @@ class UserLogin
 
   //Private function prototypes not need by developers or customers
   private:
+    //Randomally generated number to track mySQL databases created
     int databaseID;
 
+    //Usernames and passwords must be 8 to 16 characters
+    string enteredUsername = "****************";  //Usernames must be 8 to 32 characters
+    string enteredPassword = "****************";
+
+    string currentUsername = "AirBoxUser";
+    string currentPassword = "AirBoxHome";
+
+    string defaultUsername = "AirBoxUser";
+    string defaultPassword = "AirBoxHome";
 
     /**
      * @brief Encrypt password for transimission over the internet
@@ -79,17 +89,29 @@ class UserLogin
      *
      * @section DESCRIPTION
      *
-     * No special characters such as "@ _ - , . " are allowed in usernames.
-     * If username doesn't exist user is promted to create a username
+     * If username doesn't exist user is promted to create/set an username
      *
-     * @param  userName Username to check database for
+     * @param userName  Username to check database for
      *
      * @see ????
      *
      * @return TRUE if username exists, and FALSE otherwise
      */
-    bool GetUsername();
+    bool CheckUsername(string userName);
 
+
+    /**
+     * @brief Verify that username even exists in the database
+     *
+     * @section DESCRIPTION
+     *
+     * @param  userName Username to check database for
+     *
+     * @see ????
+     *
+     * @return TRUE if username changed, and FALSE otherwise
+     */
+    bool SetUsername(string userName);
 
     /**
      * @brief Parse and encrypt user password and then compare to database
@@ -104,9 +126,9 @@ class UserLogin
      *
      * @return  TRUE = 1 if username exists, and  FALSE = 0 otherwise
      */
-    bool CheckPassword();
+    bool CheckPassword(string userName);
 
-
+    bool SetPassword(string userName);
     /**
      * @brief Test userLogin.c pin using assertions, one hardware configurations, and user input.
     *

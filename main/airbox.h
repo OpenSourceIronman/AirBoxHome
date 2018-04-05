@@ -202,6 +202,10 @@ bool gauge_version(i2c_port_t port, uint32_t *version);
 bool gauge_temperature(i2c_port_t port, double *temp);
 bool gauge_voltage(i2c_port_t port, double *voltage);
 bool gauge_rsoc(i2c_port_t port, double *rsoc);
+bool ChangeSSID(string newSSID);
+bool ChangePassword(string newPassword);
+
+
 
 // vim: autoindent tabstop=4 shiftwidth=4 expandtab softtabstop=4
 

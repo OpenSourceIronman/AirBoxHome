@@ -521,6 +521,25 @@ void task_airbox_test(void *pvParameters) {
     }
 }
 
+/**
+ * @brief Change the SSID of the AirBox Home
+ *
+ */
+bool ChangeSSID(){
+
+  return TRUE;
+}
+
+/**
+ * @brief Change the password of the AirBox Home network
+ *
+ */
+bool ChangePassword(){
+
+  return TRUE;
+}
+
+
 void app_main() {
     // initialize peripherals
     airbox_init_gpio();
