@@ -33,7 +33,7 @@
   *
   * @param db Pointer to struct holding user login database (db)
   *
-  * @see ???
+  * @link http://zetcode.com/db/mysqlc/
   *
   * @return NOTHING
   */
