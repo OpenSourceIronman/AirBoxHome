@@ -1,22 +1,37 @@
-/*
- * Christopher Hewitt
- * hewittc@avcomofva.com
+/**
+ * @file airbox.c
+ * @author Christopher Hewitt (AVCOM)
+ * @email hewittc@avcomofva.com
+ * @created ?
  *
- * Drone Delivery Systems AirBox control software
+ * @author Blaze Sanders (ROBO BEV)
+ * @email blaze@robobev.com
+ * @updated 1 APRIL 2018
+ * @version 1.1
  *
- * Unless required by applicable law or agreed to in writing, this
- * software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
- * CONDITIONS OF ANY KIND, either express or implied.
-*/
+ * @brief Drone Delivery Systems AirBox control software
+ *
+ * TO-DO:
+ * Three buttons: Open and Close box. Check battery level
+ * Any time box is close its also locked
+ *
+ * @section DESCRIPTION
+ */
 
 #include "airbox.h"
-//#include "userLogin.h"
+#include "userLogin.h"
 
 // data from fuel gauge
 static uint32_t version = 0;
 static double temp = 0.0;
 static double voltage = 0.0;
 static double rsoc = 0.0;
+
+// GPIO pin constants
+static uint32_t LOCKED = 0;
+static uint32_t UNLOCKED = 1;
+static uint32_t OPEN_DOORS = 2;
+static uint32_t CLOSE_DOORS = 3;
 
 // test status
 static bool test1 = false;
@@ -37,6 +52,17 @@ static const char http_index[] =
     "<title>AirBox Control</title>\r\n"
     "</head>\r\n"
     "<body>\r\n"
+    "<center>\r\n"
+    "<img src=\"http:\" alt="">\r\n"
+    "<img src=\"http:\\"customadesign.info/airboxtechnologies-new/wp-content/uploads/2018/03/logo.png\"  alt="">\r\n"
+    "<br>\r\n"
+    "<label for=\"name\">Box ID: 420 </label>\r\n"  //TODO ACCESS USER DATABASE USING LOGIN TOKEN, REMOVE 420, AND DISPLAY BOX ID
+    "<br><br>\r\n"
+    "<button style=\"background-color: #CC322A; color: #FFF; display: inline-bl$  </button>\r\n"
+    "<button style=\"background-color: #0011FF; color: #FFF; display: inline-bl$  </button>\r\n"
+    "<button style=\"background-color: #343A40; color: #FFF; display: inline-bl$  </button>\r\n"
+    "</center>\r\n"
+
     "<a href=\"/open\">open</a><br>\r\n"
     "<a href=\"/close\">close</a><br><br>\r\n"
     "<a href=\"/battery\">battery</a><br><br>\r\n"
@@ -176,9 +202,9 @@ void airbox_init_gpio() {
     // configure enable line for 6 volt regulator
     config.intr_type = GPIO_PIN_INTR_DISABLE;
     config.mode = GPIO_MODE_OUTPUT;
-    config.pin_bit_mask = ((1 << POWER_6V_EN_PIN));
-    config.pull_down_en = 1;
-    config.pull_up_en = 0;
+    config.pin_bit_mask = ((1 << POWER_6V_EN_PIN)); //TODO Understand what 1 means
+    config.pull_down_en = true;
+    config.pull_up_en = false;
 
     gpio_config(&config);
 
@@ -189,16 +215,16 @@ void airbox_init_gpio() {
     //Configure unlock pins for mini push-pull solenoids
     config.intr_type = GPIO_PIN_INTR_DISABLE;
     config.mode = GPIO_MODE_OUTPUT;
-    config.pin_bit_mask = ((1 << UNLOCK_DOOR_1_PIN));
-    config.pin_bit_mask = ((1 << UNLOCK_DOOR_2_PIN));
-    config.pull_down_en = 1;
-    config.pull_up_en = 0;
+    config.pin_bit_mask = ((1 << UNLOCK_DOOR_1_PIN)); //TODO Understand what 1 means
+    config.pin_bit_mask = ((1 << UNLOCK_DOOR_2_PIN)); //TODO Understand what 1 means
+    config.pull_down_en = true;
+    config.pull_up_en = false;
 
     gpio_config(&config);
 
     //Lock both doors
-    gpio_set_level(UNLOCK_DOOR_1_PIN, 0);
-    gpio_set_level(UNLOCK_DOOR_2_PIN, 0);
+    gpio_set_level(UNLOCK_DOOR_1_PIN, LOCKED);
+    gpio_set_level(UNLOCK_DOOR_2_PIN, LOCKED);
 
 }
 
@@ -494,6 +520,25 @@ void task_airbox_test(void *pvParameters) {
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
+
+/**
+ * @brief Change the SSID of the AirBox Home
+ *
+ */
+bool ChangeSSID(){
+
+  return TRUE;
+}
+
+/**
+ * @brief Change the password of the AirBox Home network
+ *
+ */
+bool ChangePassword(){
+
+  return TRUE;
+}
+
 
 void app_main() {
     // initialize peripherals

@@ -8,11 +8,8 @@ Author #2: Blaze Sanders Email: blaze@robobev.com Skype: blaze.sanders Twitter: 
 
 Drone Delivery Systems AirBox control software
 
-Unless required by applicable law or agreed to in writing, this
-software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied.
+Unless required by applicable law or agreed to in writing, this software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
----
 
 Built and tested with esp-idf v3.0-rc1: https://github.com/espressif/esp-idf
 
@@ -23,3 +20,6 @@ Built and tested with esp-idf v3.0-rc1: https://github.com/espressif/esp-idf
   $ export IDF_PATH=/path/to/esp-idf
   $ make
   $ make flash
+
+
+Research GNU license rules!!!!!
